@@ -10,5 +10,8 @@ namespace AspDotNetCoreTodo.Services
     {
         // 获取未完成项
         Task<TodoItem[]> GetIncompleteItemsAsync();
+
+        // 添加一項
+        Task<bool> AddItemAsync(TodoItem newItem);
     }
 }

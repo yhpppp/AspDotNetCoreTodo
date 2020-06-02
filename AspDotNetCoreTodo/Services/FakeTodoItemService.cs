@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AspDotNetCoreTodo.Services
 {
-    public class FakeTodoItemService : ITodoItemService
+    public class FakeTodoItemService 
     {
         public Task<TodoItem[]> GetIncompleteItemsAsync()
         {
