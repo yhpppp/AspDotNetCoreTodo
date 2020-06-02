@@ -14,6 +14,8 @@ namespace AspDotNetCoreTodo.Data
             : base(options)
         {
         }
+        //数据库里的 表 或者 集合
+        public DbSet<TodoItem> Items { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

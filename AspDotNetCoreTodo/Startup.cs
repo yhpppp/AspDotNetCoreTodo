@@ -39,7 +39,10 @@ namespace AspDotNetCoreTodo
             services.AddMvc();
 
             // 添加 fake data service
-            services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+            //services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+
+            //每次 web 请求中，一个 TodoItemService 类的新实例就会被创建出来
+            services.AddScoped<ITodoItemService, TodoItemService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
