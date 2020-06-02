@@ -37,6 +37,9 @@ namespace AspDotNetCoreTodo
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            // 添加 fake data service
+            services.AddSingleton<ITodoItemService, FakeTodoItemService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
