@@ -13,5 +13,8 @@ namespace AspDotNetCoreTodo.Services
 
         // 添加一項
         Task<bool> AddItemAsync(TodoItem newItem);
+
+        //
+        Task<bool> MarkDoneAsync(Guid id);
     }
 }

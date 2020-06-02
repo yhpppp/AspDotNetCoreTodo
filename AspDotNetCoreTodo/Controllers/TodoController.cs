@@ -1,6 +1,7 @@
 using AspDotNetCoreTodo.Models;
 using AspDotNetCoreTodo.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace AspDotNetCoreTodo.Controllers
@@ -22,6 +23,7 @@ namespace AspDotNetCoreTodo.Controllers
             return View(model);
         }
 
+        //添加一項
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddItem(TodoItem newItem)
         {
@@ -36,6 +38,25 @@ namespace AspDotNetCoreTodo.Controllers
             {
                 return BadRequest("Could not add item");
             }
+            return RedirectToAction("Index");
+        }
+
+        // 处理完成项
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MarkDone(Guid id)
+        {
+            if(id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var successful = await _todoItemService.MarkDoneAsync(id);
+
+            if(!successful)
+            {
+                return BadRequest("Could not mark item as done");
+            }
+
             return RedirectToAction("Index");
         }
     }
